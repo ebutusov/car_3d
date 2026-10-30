@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cayenne 3D Configurator</title>
+	<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+	<div id="viewport"></div>
+
+	<div id="loading">
+		<div class="loading-card">
+			<div class="spinner"></div>
+			<div id="loading-text">Building the car…</div>
+		</div>
+	</div>
+
+	<div id="hover-label" hidden></div>
+	<div id="walk-hint" hidden>Walk mode · drag (or click to lock the mouse) to look · <b>WASD</b> move · <b>Q/E</b> down/up · <b>Shift</b> run · <b>V</b> back to orbit</div>
+
+	<header id="title">
+		<div class="model">Cayenne</div>
+		<div class="subtitle">Interactive 3D study</div>
+	</header>
+
+	<aside id="panel">
+		<button id="panel-toggle" title="Hide panel" aria-label="Toggle panel">⟩</button>
+		<div class="panel-scroll">
+			<section>
+				<h2>Environment</h2>
+				<div class="segmented" id="presets">
+					<button data-preset="day">Day</button>
+					<button data-preset="sunset">Sunset</button>
+					<button data-preset="overcast">Overcast</button>
+					<button data-preset="night">Night</button>
+				</div>
+				<label class="slider">
+					<span>Time of day <output id="time-output">12:00</output></span>
+					<input id="time-slider" type="range" min="0" max="24" step="0.05" value="11.5">
+				</label>
+				<label class="slider">
+					<span>Clouds <output id="cloud-output">20%</output></span>
+					<input id="cloud-slider" type="range" min="0" max="1" step="0.01" value="0.2">
+				</label>
+				<button id="day-night" class="wide">☾ Switch to night</button>
+			</section>
+
+			<section>
+				<h2>Paint</h2>
+				<div id="swatches"></div>
+				<div class="row">
+					<label class="color-picker">Custom <input id="paint-picker" type="color" value="#1b3f73"></label>
+					<select id="paint-finish" aria-label="Paint finish">
+						<option value="metallic">Metallic</option>
+						<option value="gloss">Solid gloss</option>
+						<option value="satin">Satin</option>
+					</select>
+				</div>
+				<div id="paint-name" class="caption"></div>
+			</section>
+
+			<section>
+				<h2>Doors &amp; panels <small>click the car too</small></h2>
+				<div class="grid" id="parts">
+					<button data-part="frontLeftDoor">Front left <kbd>1</kbd></button>
+					<button data-part="frontRightDoor">Front right <kbd>2</kbd></button>
+					<button data-part="rearLeftDoor">Rear left <kbd>3</kbd></button>
+					<button data-part="rearRightDoor">Rear right <kbd>4</kbd></button>
+					<button data-part="hood">Bonnet <kbd>H</kbd></button>
+					<button data-part="tailgate">Tailgate <kbd>T</kbd></button>
+				</div>
+				<div class="row">
+					<button id="open-all">Open all <kbd>O</kbd></button>
+					<button id="close-all">Close all</button>
+				</div>
+			</section>
+
+			<section>
+				<h2>Wheels &amp; lights</h2>
+				<label class="slider">
+					<span>Steering <output id="steer-output">0°</output></span>
+					<input id="steer-slider" type="range" min="-34" max="34" step="0.5" value="0">
+				</label>
+				<label class="slider">
+					<span>Wheel roll speed <output id="speed-output">0 km/h</output></span>
+					<input id="speed-slider" type="range" min="-20" max="60" step="1" value="0">
+				</label>
+				<div class="row">
+					<span class="label">Headlights</span>
+					<div class="segmented small" id="light-modes">
+						<button data-lights="auto">Auto</button>
+						<button data-lights="on">On</button>
+						<button data-lights="off">Off</button>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2>Camera</h2>
+				<div class="segmented" id="camera-modes">
+					<button data-camera="orbit">Orbit</button>
+					<button data-camera="walk">Walk / fly <kbd>V</kbd></button>
+				</div>
+				<div class="grid views">
+					<button data-view="threeQuarter">¾ front</button>
+					<button data-view="side">Side</button>
+					<button data-view="rear">Rear</button>
+					<button data-view="top">Top</button>
+					<button data-view="driver">Driver seat</button>
+					<button data-view="engine">Engine bay</button>
+				</div>
+				<label class="check"><input id="auto-rotate" type="checkbox"> Auto-rotate</label>
+			</section>
+
+			<section class="help">
+				<h2>Keyboard</h2>
+				<dl>
+					<dt>Mouse</dt><dd>Drag to orbit · right-drag pan · wheel zoom · click a door/bonnet/tailgate</dd>
+					<dt>W A S D</dt><dd>Move (pans the orbit target in orbit mode)</dd>
+					<dt>Q / E</dt><dd>Down / up (walk), zoom (orbit)</dd>
+					<dt>← →</dt><dd>Steer · <kbd>↑</kbd><kbd>↓</kbd> roll wheels</dd>
+					<dt>1–4 H T O</dt><dd>Doors, bonnet, tailgate, all</dd>
+					<dt>N · L · V</dt><dd>Day/night · lights · camera mode</dd>
+					<dt>P · R</dt><dd>Next paint colour · reset view</dd>
+				</dl>
+			</section>
+		</div>
+	</aside>
+
+	<script type="module" src="/src/main.js"></script>
+</body>
+</html>

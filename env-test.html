@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
+	<title>Environment test</title>
+	<style>
+		html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+		canvas { display: block; }
+		#controls { position: fixed; top: 8px; left: 8px; color: #fff; font: 12px sans-serif; background: rgba(0,0,0,0.45); padding: 6px 8px; border-radius: 4px; }
+		#controls.hidden { display: none; }
+	</style>
+</head>
+<body>
+	<div id="controls">
+		<label>time <input id="time" type="range" min="0" max="24" step="0.05" value="11.5"></label>
+		<label>clouds <input id="clouds" type="range" min="0" max="1" step="0.01" value="0.2"></label>
+		<button data-preset="day">day</button>
+		<button data-preset="sunset">sunset</button>
+		<button data-preset="overcast">overcast</button>
+		<button data-preset="night">night</button>
+	</div>
+	<script type="module" src="/src/env-test.js"></script>
+</body>
+</html>

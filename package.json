@@ -1,0 +1,24 @@
+{
+  "name": "car3d",
+  "version": "1.0.0",
+  "description": "Interactive procedural Porsche Cayenne-style SUV in three.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node tests/interaction.mjs",
+    "test:views": "node tests/carViews.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "three": "^0.187.0",
+    "three-mesh-bvh": "^0.9.17"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1",
+    "vite": "^8.3.5"
+  }
+}
